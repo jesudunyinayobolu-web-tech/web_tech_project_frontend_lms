@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Library</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="#" class="nav-brand">
+                    <div class="logo">📚</div>
+                    <span>Library System</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Manage Books</a></li>
+                    <li><a href="#">Reports</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <button class="nav-icon">
+                    <span>🔔</span>
+                </button>
+                <div class="user-avatar admin-avatar">
+                    <span>A</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="profile-avatar admin-avatar">
+                    <span>A</span>
+                </div>
+                <h3>Admin</h3>
+                <p>@administrator</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="books">
+                    <span class="icon">📚</span>
+                    <span>Manage Books</span>
+                </a>
+                <a href="#" class="nav-item" data-section="borrows">
+                    <span class="icon">📋</span>
+                    <span>Borrow Requests</span>
+                </a>
+                <a href="#" class="nav-item" data-section="overdue">
+                    <span class="icon">⚠️</span>
+                    <span>Overdue Books</span>
+                </a>
+                <a href="#" class="nav-item" data-section="students">
+                    <span class="icon">👥</span>
+                    <span>Students</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-item" id="logoutBtn">
+                    <span class="icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content admin-content">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="#">Admin</a>
+                <span>/</span>
+                <a href="#">Dashboard</a>
+                <span>/</span>
+                <span id="breadcrumbCurrent">Manage Books</span>
+            </div>
+            
+            <header class="admin-header">
+                <h1 id="sectionTitle">Manage Books</h1>
+                <button class="btn-primary" id="addBookBtn">+ Add New Book</button>
+            </header>
+            
+            <div class="search-filter-bar">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="adminSearch" placeholder="Search books by title, author, ISBN...">
+                </div>
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">All Categories</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="business">Business</option>
+                    <option value="self-help">Self Help</option>
+                    <option value="technology">Technology</option>
+                </select>
+            </div>
+            
+            <!-- Books Management Section -->
+            <section id="booksSection" class="admin-section">
+                <div class="books-table-container">
+                    <table class="admin-table" id="booksTable">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>ISBN</th>
+                                <th>Category</th>
+                                <th>Available</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="booksTableBody">
+                            <!-- Books will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Borrow Requests Section -->
+            <section id="borrowsSection" class="admin-section" style="display: none;">
+                <div class="books-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Book</th>
+                                <th>Borrow Date</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="borrowsTableBody">
+                            <!-- Borrows will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Overdue Section -->
+            <section id="overdueSection" class="admin-section" style="display: none;">
+                <div class="books-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Book</th>
+                                <th>Due Date</th>
+                                <th>Days Overdue</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="overdueTableBody">
+                            <!-- Overdue books will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Students Section -->
+            <section id="studentsSection" class="admin-section" style="display: none;">
+                <div class="books-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Books Borrowed</th>
+                                <th>Joined</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- Students will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Add/Edit Book Modal -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Book</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <form id="bookForm">
+                <input type="hidden" id="bookId">
+                <div class="form-group">
+                    <label for="bookTitle">Title *</label>
+                    <input type="text" id="bookTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookAuthor">Author *</label>
+                    <input type="text" id="bookAuthor" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookISBN">ISBN *</label>
+                    <input type="text" id="bookISBN" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookCategory">Category</label>
+                    <select id="bookCategory">
+                        <option value="fiction">Fiction</option>
+                        <option value="business">Business</option>
+                        <option value="self-help">Self Help</option>
+                        <option value="technology">Technology</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="totalCopies">Total Copies *</label>
+                    <input type="number" id="totalCopies" min="1" value="1" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="js/admin.js"></script>
+</body>
+</html>
