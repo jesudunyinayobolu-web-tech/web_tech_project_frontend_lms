@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <header class="app-brand-bar">
+        <div class="app-brand-wrapper">
+            <img src="images/go.png" alt="Academic City University logo" class="app-brand-logo">
+            <h1 class="app-brand-title">Academic City University LMS</h1>
+        </div>
+    </header>
     <div class="dashboard">
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -19,103 +25,97 @@
             </div>
             
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item">
-                    <span class="icon">📝</span>
-                    <span>Your Note</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="icon">📅</span>
-                    <span>Schedule</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="icon">🎧</span>
-                    <span>Audio Books</span>
-                </a>
                 <a href="#" class="nav-item active">
-                    <span class="icon">📚</span>
+                    <span class="icon"></span>
                     <span>Book Store</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="icon">❤️</span>
-                    <span>Your Likes</span>
                 </a>
             </nav>
             
             <div class="sidebar-footer">
-                <a href="#" class="nav-item">
-                    <span class="icon">⚙️</span>
-                    <span>Settings</span>
-                </a>
-                <a href="#" class="nav-item" id="logoutBtn">
-                    <span class="icon">🚪</span>
+                <a href="index.html" class="nav-item" id="logoutBtn">
+                    <span class="icon"></span>
                     <span>Logout</span>
                 </a>
             </div>
             
-            <div class="stay-home-badge">
-                #STAYATHOME
-            </div>
+          
         </aside>
         
-        <!-- Main Content -->
-        <main class="main-content">
-            <header class="top-header">
-                <div class="header-tabs">
-                    <button class="tab-btn active" data-tab="popular">Popular</button>
-                    <button class="tab-btn" data-tab="business">Business</button>
-                    <button class="tab-btn" data-tab="improvement">Self Improvement</button>
-                </div>
-                
-                <div class="header-actions">
-                    <div class="search-box">
-                        <span class="search-icon">🔍</span>
-                        <input type="text" id="searchInput" placeholder="Search for title, author, tags, etc">
-                    </div>
-                    <button class="notification-btn">
-                        <span class="bell-icon">🔔</span>
-                        <span class="badge">3</span>
-                    </button>
-                </div>
-            </header>
-            
-            <!-- Featured Books -->
-            <section class="featured-books">
-                <div class="book-grid" id="featuredBooks">
-                    <!-- Books will be loaded here -->
-                </div>
-            </section>
-            
-            <!-- Your Books Section -->
-            <section class="your-books-section">
-                <div class="section-header">
-                    <h2>Your Books</h2>
-                    <div class="sort-dropdown">
-                        <label>Sort by:</label>
-                        <select id="sortSelect">
-                            <option value="date">Date</option>
-                            <option value="title">Title</option>
-                            <option value="author">Author</option>
+        <!-- Content Wrapper -->
+        <div class="dashboard-content-wrapper">
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="top-header">
+                    <h1 style="font-size: 24px; font-weight: 600; color: var(--text-dark);">Available Books</h1>
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="searchInput" placeholder="Search by title, author, ISBN...">
+                        </div>
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="fiction">Fiction</option>
+                            <option value="business">Business</option>
+                            <option value="self-help">Self Help</option>
+                            <option value="technology">Technology</option>
                         </select>
                     </div>
-                </div>
+                </header>
                 
-                <div class="borrowed-books-list" id="borrowedBooks">
-                    <!-- Borrowed books will be loaded here -->
+                <!-- All Books Table -->
+                <section class="your-books-section" style="margin-bottom: 30px;">
+                    <div class="books-table-container">
+                        <table class="admin-table" id="booksTable">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>ISBN</th>
+                                    <th>Category</th>
+                                    <th>Availability Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="booksTableBody">
+                                <!-- Books will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Your Books Section -->
+                <section class="your-books-section">
+                    <div class="section-header">
+                        <h2>Your Books</h2>
+                        <div class="sort-dropdown">
+                            <label>Sort by:</label>
+                            <select id="sortSelect">
+                                <option value="date">Date</option>
+                                <option value="title">Title</option>
+                                <option value="author">Author</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="borrowed-books-list" id="borrowedBooks">
+                        <!-- Borrowed books will be loaded here -->
+                    </div>
+                </section>
+            </main>
+            
+            <!-- Book Details Sidebar -->
+            <aside class="book-details-sidebar" id="bookDetailsSidebar">
+                <div class="book-details-content">
+                    <h2>Book Details</h2>
+                    <div id="bookDetailsContainer">
+                        <p class="no-selection">Select a book to view details</p>
+                    </div>
                 </div>
-            </section>
-        </main>
-        
-        <!-- Book Details Sidebar -->
-        <aside class="book-details-sidebar" id="bookDetailsSidebar">
-            <div class="book-details-content">
-                <h2>Book Details</h2>
-                <div id="bookDetailsContainer">
-                    <p class="no-selection">Select a book to view details</p>
-                </div>
-            </div>
-        </aside>
+            </aside>
+        </div>
     </div>
     
+    <script src="js/auth.js"></script>
     <script src="js/student.js"></script>
 </body>
 </html>

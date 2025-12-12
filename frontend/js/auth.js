@@ -1,6 +1,7 @@
+
 // API Base URL - Update this with your Render backend URL after deployment
 const API_URL = 'http://localhost:5000/api';
-
+window.API_URL = API_URL; // Make it globally accessible
 // Check if user is already logged in
 if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
     const token = localStorage.getItem('token');
@@ -132,7 +133,16 @@ async function checkTokenAndRedirect() {
 // Export for use in other files
 window.authUtils = {
     getToken: () => localStorage.getItem('token'),
-    getUser: () => JSON.parse(localStorage.getItem('user')),
+    getUser: () => {
+        const userStr = localStorage.getItem('user');
+        if (!userStr) return null;
+        try {
+            return JSON.parse(userStr);
+        } catch (e) {
+            console.error('Error parsing user data:', e);
+            return null;
+        }
+    },
     logout: () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
