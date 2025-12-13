@@ -83,7 +83,7 @@ if (registerForm) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name, email, password })
+                body: JSON.stringify({ name, email, password, confirmPassword })
             });
             
             const data = await response.json();
