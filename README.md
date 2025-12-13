@@ -69,5 +69,5 @@ frontend/
 ### Student
 - Email: `king1@gmail.com`
 - Password: `123456`
-- Or create
+- Or create a student by registering
 
