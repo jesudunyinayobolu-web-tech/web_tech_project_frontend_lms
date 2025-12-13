@@ -1,6 +1,6 @@
 
 // API Base URL - Update this with your Render backend URL after deployment
-const API_URL = 'https://web-tech-project-backend-lms.onrender.com';
+const API_URL = 'https://web-tech-project-backend-lms.onrender.com/api';
 window.API_URL = API_URL; // Make it globally accessible
 // Check if user is already logged in
 if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
