@@ -99,7 +99,7 @@ if (registerForm) {
         } catch (error) {
             console.error('Registration error:', error);
             showError(errorMessage, 'Unable to connect to server. Please try again.');
-        }
+ `  `       }
     });
 }
 
