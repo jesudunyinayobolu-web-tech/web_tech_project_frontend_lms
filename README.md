@@ -11,7 +11,6 @@ This is the frontend application for the Academic City University Library Manage
  ``
 🔗 **Backend**: `https://web-tech-project-backend-lms.onrender.com`
 🔗 **Live URL**: `https://jesudunyinayobolu-web-tech.github.io/web_tech_project_frontend_lms/`
-**Note**: Update this URL after deploying to GitHub Pages.
 
 ## Features
 
